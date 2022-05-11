@@ -11,7 +11,6 @@ app.use(bodyParser.json())
 app.set('view engine','ejs')
 app.use(express.static('public'))
 
-
 var obj = {}
 
 //MySQL Connect phpMyAdmin
@@ -24,15 +23,8 @@ const pool = mysql.createPool({
     database : 'Final_Ex' //Connect Database from Final_Ex.sql (Import to phpMyAdmin)
 })
 
-
 app.get('/addlottery',(req, res) => {   
     res.render('addlottery')
-})
-app.get('/Chklottery',(req, res) => {   
-    res.render('Chklottery')
-})
-app.get('/lottery-check',(req, res) => {   
-    res.render('Chklottery')
 })
 
 app.get('/credit',(req, res) => {   
@@ -74,7 +66,7 @@ app.post('/addlottery',(req, res) => {
 
                 //Check 
                 pool.getConnection((err, connection2) => {
-                    connection2.query(`SELECT COUNT(id) AS count FROM lottery WHERE id = ${params.id}`, (err, rows) => {
+                    connection.query(`SELECT COUNT(id) AS count FROM lottery WHERE id = ${params.id}`, (err, rows) => {
                         if(!rows?.[0].count){
                             connection.query('INSERT INTO Lottery SET ?', params, (err, rows) => {
                                 connection.release()

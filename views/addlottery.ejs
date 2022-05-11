@@ -4,39 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Aclonica'rel='stylesheet'>
     <title>LotteryChecker Add Item</title>
+
+     <!--เชื่อกับลิงค์ CSS-->
+    <link rel="stylesheet" href="addlottery.css">
+
     <style>
         body {  
           background-image: url('/img/160.png');
           background-repeat: no-repeat;
           background-size: cover;
-        }
-        </style>
+        }   
+    </style>
 </head>
-<body>
 
-    <% if(typeof mesg != "undefined") { %>
-        <h1><%= mesg %></h1>
-        <% } %>
-    <h1>ADD LOTTERY TO SYSTEM</h1>
-    <form action="/addlottery" method="post">
-        <br>
-        <div>
-            <label>DATE</label>
-            <input type="text" name="DATE" id="DATE">
-        </div>
-        <br>
-        <div>
-            <label>Number</label>
-            <input type="text" name="Number" id="Number">
-        </div>
-        <br>
-        <div>
-            <label>Prize</label>
-            <input type="text" name="Prize" id="Prize">
-        </div>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+<body>
+    
+        <form action="/addlottery" method="post">
+        <div class="table-menu">  
+            <h1>ADD LOTTERY TO SYSTEM</h1>
+            <a  class="font1" href='/'>HomePage</a>
+            <a  class="font1" href='/addlottery'>AddLottery</a>   
+            <a  class="font1" href='/Chklottery'>CheckLottery</a>
+            <a  class="font1" href='/credit'>CREDIT</a>
+            </div> 
+            <br>
+            <br>
+
+            <table>
+            <th>
+                <label>DATE</label>
+                <input type="text" name="DATE" id="DATE">
+            </th>
+            <br>
+            <th>
+                <label>Number</label>
+                <input type="text" name="Number" id="Number">
+            </th>
+            <br>
+            <th>
+                <label>Prize</label>
+                <input type="text" name="Prize" id="Prize">
+            </th>   
+            <th>
+                <button type="submit">Submit</button>
+            </th>
+                <% if(typeof mesg != "undefined") { %>
+                    <h1><%= mesg %></h1>
+                    <% } %>            
+                </table>
+            </form>
 </body>
 </html>
