@@ -1,0 +1,43 @@
+.font{
+
+    font-family:Aclonica;
+    font-size: 30px;
+    color:  	#7e02f1;
+    text-align: center;
+  }
+.font1{
+
+    font-family:Aclonica;
+    font-size: 30px;
+    color:  	#7e02f1;
+    margin-left: 5%;
+  }
+  .font2{
+
+    font-family:Aclonica;
+    font-size: 20px;
+    color:  	#7e02f1;
+    text-align: center;
+  }
+  table, th, td {
+    border: 3px solid;
+    margin-left: 5%;
+    border-collapse: collapse;
+    background-color: 	rgba(250, 250, 250, 0.767);
+  }
+table
+{
+    width: 1000px;
+}
+h1{
+
+    font-family:Aclonica;
+    font-size: 80px;
+    color:  	#9429f8;
+    margin-left: 5%;
+}
+
+.table-menu {
+    background-color: 	rgba(250, 250, 250, 0.767);
+    text-align:left;
+    }

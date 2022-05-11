@@ -9,6 +9,8 @@ const port = process.env.PORT || 5000;
  
 app.use(bodyParser.json())
 app.set('view engine','ejs')
+app.use(express.static('public'))
+
 
 var obj = {}
 
@@ -22,8 +24,19 @@ const pool = mysql.createPool({
     database : 'Final_Ex' //Connect Database from Final_Ex.sql (Import to phpMyAdmin)
 })
 
+
 app.get('/addlottery',(req, res) => {   
     res.render('addlottery')
+})
+app.get('/Chklottery',(req, res) => {   
+    res.render('Chklottery')
+})
+app.get('/lottery-check',(req, res) => {   
+    res.render('Chklottery')
+})
+
+app.get('/credit',(req, res) => {   
+    res.render('credits')
 })
 
 
@@ -66,20 +79,53 @@ app.post('/addlottery',(req, res) => {
                             connection.query('INSERT INTO Lottery SET ?', params, (err, rows) => {
                                 connection.release()
                                 if(!err){
-                                    obj = {Error:err, mesg : `Success adding data ${params.Number}`}
+                                    obj = {Error:err, mesg : `เพิ่มตัวเลขสำเสร็จ ${params.Number}`}
                                     res.render('addlottery', obj)
                                 }else {
                                     console.log(err)
                                     }
                                 })           
                         } else {
-                            obj = {Error:err, mesg : `Can not adding data ${params.Number}`}
+                            obj = {Error:err, mesg : `ไม่สามารถเพิ่มตัวเลขได้ ${params.Number}`}
                             res.render('addlottery', obj)
                             }
                         })
                     })
                 })
             })
+
+//ค้นหา lottery
+
+app.get('/lottery-check',function(req, res) {
+ 
+    con.connection(function(error){
+        
+        var sql ="select * from Number"; 
+         
+        con.query(sql,function(error, result){
+            if(error) console.log(error);
+            res.render(__dirname+"/lottery-check",{Number:result});
+         }); 
+    });
+});
+
+app.get('/Chklottery',function(res,req){
+
+    var DATE = req.query.DATE;
+    var Number = req.query.Number;
+
+    con.connection(function(error){
+        
+        if(error) console.log(error);
+        var sql = "SELECT * from studen where Number LIKE '%"+Number+"%' AND DATE LIKE '%"+DATE+"%'";
+        con.query(sql, function(error,result){
+            if(error) console.log(error);
+            res.render(__dirname+"/lottery-check",{Number:result});
+        });
+
+    });
+});
+
 
 app.listen(port, () => 
     console.log("listen on port : ?", port)

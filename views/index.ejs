@@ -4,31 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Aclonica'rel='stylesheet'>
     <title>LotteryChecker</title>
+
+ <!--เชื่อกับลิงค์ CSS-->
+ <link rel="stylesheet" href="index.css">
+
+    <style>
+        body {  
+          background-image: url('/img/160.png');
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        </style>
 </head>
 <body>
 
-    
     <% if(typeof mesg != "undefined") { %>   
         <h1><%= mesg %></h1>   
         <% } %>
-    <h1>HomePAGE</h1>   
-    <a href='/addlottery'>addLottery</a>   
-    
-    <table id=”table”>
-    <table>
+    <div class="table-menu">  
+    <h1>LotteryToday</h1>
+    <a  class="font1" href='/addlottery'>AddLottery</a>   
+    <a  class="font1" href='/Chklottery'>CheckLottery</a>
+    <a  class="font1" href='/credit'>CREDIT</a>
+    </div> 
+    <br>
+    <br>
+
+    <table class=”table-content”>
         <tr>
-            <th>id</th>
-            <th>DATE</th>
-            <th>Number</th>
-            <th>Prize</th>
+            <th class="font">id</th>
+            <th class="font">DATE</th>
+            <th class="font">Number</th>
+            <th class="font">Prize</th>
         </tr>
         <% lottery.forEach(function(item) { %>
         <tr>
-            <td><%= item.id %></td>
-            <td><%= item.DATE %></td>
-            <td><%= item.Number %></td>
-            <td><%= item.Prize %></td>
+            <td class="font2"><%= item.id %></td>
+            <td class="font2"><%= item.DATE %></td>
+            <td class="font2"><%= item.Number %></td>
+            <td class="font2"><%= item.Prize %></td>
         </tr>
         <% }) %>
     </table>
